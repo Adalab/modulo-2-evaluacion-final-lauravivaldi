@@ -51,18 +51,12 @@ body {
     width: 600px;
     display: flex;
     justify-content: center;
-  
-
 }
-/* */
-.products-list{
 
-
-} 
 .product-item {
   list-style: none; /* quitamos los puntos de <li> */
 }
-.product-card {
+.product-cart {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -100,6 +94,15 @@ body {
   color: #ddd;
   border-radius: 5px;
   border-color: #72a2c4;
+}
+
+.in-cart{
+   padding: 10px;
+  background-color: #35cb3f;
+  color: #ddd;
+  border-radius: 5px;
+  border-color: #72a2c4;
+
 }
 
 /* Carrito div*/
