@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ADALAB STORAGE</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./scss/main.scss" />
+    <link rel="icon" href="./images/favicon.png" />
+  </head>
+  <body>
+    <header class="header-container">
+      <input class="header-input" type="text" aria-label="Buscar producto" placeholder="Find your product"/>
+      <button class="header-button">SEARCH</button>
+    </header>
+      <div class="container-all">
+        <section class="container">   
+            <div class="products-container">
+                <h2>Products</h2>
+                <ul class="products-list"></ul>
+            </div>
+        </section>
+        <section class="shop-cart">
+            <div class="shop-cart-container">
+              <h2>
+                Shopping Cart
+                <img class="cart-icon" src="https://cdn-icons-png.flaticon.com/512/34/34568.png" alt="Carrito de compras"/>
+              </h2>
+                <button class="delete-button">Remove products</button>
+            </div>
+              <div class="list-container">
+                <ul class="shop-cart-list"></ul>
+              </div>
+        </section>
+      </div>   
+  <footer class="footer">
+    <p class="footer-text">Online Storage ® ADALAB 2025</p>
+  </footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

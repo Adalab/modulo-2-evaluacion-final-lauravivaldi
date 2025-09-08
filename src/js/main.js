@@ -1,4 +1,3 @@
- 
 "use strict";
 console.log("ready");
 
@@ -9,7 +8,6 @@ const cartShopCart = document.querySelector(".shop-cart-list");//ul del carrito 
 
 let products = [];
 
-// Obtener los datos de la API
 const getApiData = () => {
   fetch("https://fakestoreapi.com/products")
     .then((res) => res.json())
@@ -21,7 +19,7 @@ const getApiData = () => {
 };
 getApiData();
 
-// Función para pintar los productos en el DOM
+
 const renderProducts = (list) => {
   productsList.innerHTML = "";
 
@@ -36,7 +34,7 @@ const renderProducts = (list) => {
         <p class="product-name">${item.title}</p>
         <p class="product-price">€${item.price.toFixed(2)}</p>
         <p class="product-description">${item.description}</p>
-        <button class="product-button">COMPRAR</button>
+        <button class="product-button">BUY NOW</button>
       </div>
     `;
 
@@ -46,10 +44,10 @@ const renderProducts = (list) => {
       const inCartNow = buttonCartProduct.classList.toggle("in-cart");
 
       if (inCartNow) {
-        buttonCartProduct.textContent = "ELIMINAR";
+        buttonCartProduct.textContent = "REMOVE";
         addToCart(item);
       } else {
-        buttonCartProduct.textContent = "COMPRAR";
+        buttonCartProduct.textContent = "BUY NOW";
         removeFromCart(item);
       }
     });
@@ -71,7 +69,7 @@ const addToCart = (product) => {
             <p class="cart-name">${product.title}</p>
             <p class="cart-price">€${product.price.toFixed(2)}</p>
           </div>
-        <button class="delete-cart-button">ELIMINAR</button>
+        <button class="delete-cart-button">REMOVE</button>
     </div>
   `;
 
@@ -79,12 +77,12 @@ const addToCart = (product) => {
   deleteCartButton.addEventListener("click", () => {
     li.remove();
 
-    // Resetear el botón en la lista principal
+
     const liProduct = productsList.querySelector(`.product-item[data-id="${product.id}"]`);
     if (liProduct) {
       const btn = liProduct.querySelector(".product-button");
       btn.classList.remove("in-cart");
-      btn.textContent = "COMPRAR";
+      btn.textContent = "BUY NOW";
     }
   });
 
@@ -99,32 +97,38 @@ const removeFromCart = (product) => {
   if (liProduct) {
     const btn = liProduct.querySelector(".product-button");
     btn.classList.remove("in-cart");
-    btn.textContent = "COMPRAR";
+    btn.textContent = "BUY NOW";
   }
 }; 
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//este es el boton general que elimina todo los productos del carrito
 const deleteButton = document.querySelector(".delete-button");
 
 deleteButton.addEventListener("click", () => {
-  cartShopCart.innerHTML = ""; //ul
+  cartShopCart.innerHTML = "";   //ul
+  const allButtons = productsList.querySelectorAll(".product-button");
+  allButtons.forEach((btn) => {
+    btn.classList.remove("in-cart");
+    btn.textContent = "BUY NOW";
+  });
 });
 
 
-// Filtrar productos por búsqueda
-function searchProducts() {
+const searchProducts = () => {
   const inputValue = searchInput.value.toLowerCase();
+  if (inputValue === "") {
+    renderProducts(products);
+    return;
+  }
   const filtered = products.filter((item) =>
     item.title.toLowerCase().includes(inputValue)
   );
   renderProducts(filtered);
 }
 
-// Eventos
-searchButton.addEventListener("click", searchProducts); 
+searchButton.addEventListener("click", searchProducts);  
+
+
 
 
 
